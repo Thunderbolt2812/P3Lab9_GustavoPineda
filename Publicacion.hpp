@@ -3,8 +3,8 @@
 #include<string>
 #include<fstream>
 #include<iostream>
-#include "Usuario.hpp"
 using namespace std;
+class Usuario;
 class Publicacion {
 private:
 	int idPublicacion;

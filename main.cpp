@@ -10,18 +10,25 @@ bool empty(ifstream& archivo){
 }
 int cont = 1;
 int main(int argc, char** argv) {
-	ifstream* Usuarios = new ifstream("Usuarios.bin");
-	if(empty(*Usuarios)){
-		Usuario* admin = new Usuario(cont,"admin","1111",true);
-		admin->guardarUsuario(Usuarios);
-	}else{
-		string user,contrasena;
-		cout<<"Login"<<endl;
-		cout<<"Username: ";
-		cin>>user;
-		cout<<endl<<"Contrasena: ";
-		cin>>contrasena;
-		cout<<endl;
+	ifstream* Usuarios = new ifstream("Usuarios.bin",ios::binary);
+	if(Usuarios->is_open()){
+		if(empty(*Usuarios)){
+			Usuarios->close();
+			ofstream* Usuari = new ofstream("Usuarios.bin");
+			Usuario* admin = new Usuario(cont,"admin","1111",true);
+			admin->guardarUsuario(Usuari);
+			Usuari->close();
+		}else{
+			Usuarios->close();
+			string user,contrasena;
+			cout<<"Login"<<endl;
+			cout<<"Username: ";
+			cin>>user;
+			cout<<endl<<"Contrasena: ";
+			cin>>contrasena;
+			cout<<endl;
+			
+		}
 	}
 	
 	return 0;

@@ -1,8 +1,10 @@
 #ifndef USUARIO_HPP
 #define USUARIO_HPP
 #include<string>
+#include<vector>
 #include<fstream>
 #include<iostream>
+#include "Publicacion.hpp"
 using namespace std;
 class Usuario {
 private:
@@ -10,8 +12,10 @@ private:
 	string username;
 	string contrasena;
 	bool esAdmin;
+	vector<Publicacion*> publicaciones;
 public:
 	Usuario();
+	Usuario(int,string,string,bool,vector<Publicacion*>);
 	Usuario(int,string,string,bool);
     int getId() const;
     string getUsername() const;
